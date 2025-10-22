@@ -12,7 +12,7 @@ const meta = {
     value: { control: 'text' },
     minHeight: { control: 'text' },
   },
-  args: { onClick: fn() },
+  args: { onChange: fn() },
 } satisfies Meta<typeof CodeEditor>;
 
 export default meta;

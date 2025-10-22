@@ -7,6 +7,7 @@ interface Props {
   language: string;
   minHeight?: number;
   value?: string;
+  onChange: (value: string) => void;
 }
 
 const getLangExtension = (language: string): LanguageSupport => {
@@ -25,6 +26,7 @@ const px = (value: number): string => {
 
 const defaultStyle = {
   border: 'solid 1px #88c0d0',
+  backgroundColor: '#ffffff',
 
   borderRadius: '8px',
   padding: '8px',
@@ -34,6 +36,7 @@ export const CodeEditor = ({
   language,
   minHeight = 200,
   value = '',
+  onChange = () => null,
 }: Props) => {
   const langSupport = getLangExtension(language);
 
@@ -47,6 +50,7 @@ export const CodeEditor = ({
       extensions={[ langSupport ]}
       style={style}
       value={value}
+      onChange={onChange}
     />
   );
 }
