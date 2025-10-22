@@ -1,0 +1,14 @@
+.badge {
+  color: #2e3440;
+  padding: 3px 6px;
+
+  background-color: #d8dee9;
+  border-radius: 4px;
+  line-height: 1.2em;
+
+  cursor: pointer;
+
+  &.active {
+    background-color: #8fbcbb;
+  }
+}
