@@ -1,0 +1,23 @@
+.input {
+  background-color: #F5F7FA;
+
+  box-sizing: border-box;
+
+  &:focus {
+    outline: solid 1px #cfd6dd;
+  }
+  border: none;
+}
+
+.variation-500x80 {
+  width: 500px;
+  height: 80px;
+  font-size: 24px;
+  padding: 25px 26px;
+  border-radius: 15px;
+}
+
+.variation-shadow {
+  box-shadow: -3px -1px 4px 0px #00000040;
+  box-shadow: 3px 4px 4px 0px #00000040;
+}

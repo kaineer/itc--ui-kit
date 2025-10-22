@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import classes from './Button.module.css';
 import type { ReactNode, MouseEvent } from 'react';
+import { getVariationClasses } from '../shared/classes';
 
 interface Props {
   title: string;
@@ -12,9 +13,7 @@ interface Props {
 export const Button = ({
   title = 'Нажать', variation, children
 }: Props) => {
-  const variationClasses =
-    variation.split(" ").map((v) =>
-      String(classes["variation-" + v])).join(" ");
+  const variationClasses = getVariationClasses(variation, classes);
 
   const className = clsx(classes.button, variationClasses);
 
