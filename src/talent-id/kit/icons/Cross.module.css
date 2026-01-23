@@ -1,0 +1,20 @@
+.cross {
+  color: #fff;
+  cursor: pointer;
+}
+
+.variation-black {
+  color: #000;
+}
+
+.variation-white {
+  color: #fff;
+}
+
+.variation-grey {
+  color: #a4a7ae;
+}
+
+.variation-violet {
+  color: #c3a4d5;
+}

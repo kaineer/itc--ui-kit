@@ -1,19 +1,22 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Arrow } from "./Arrow";
+import { Cross } from "./Cross";
 import { fn } from "storybook/test";
 
 const meta = {
-  title: "TalentId/Kit/Icons/Arrow",
-  component: Arrow,
+  title: "TalentId/Kit/Icons/Cross",
+  component: Cross,
   parameters: {},
   argTypes: {
-    direction: { control: "select", options: ["down", "right"] },
+    variation: {
+      control: "select",
+      options: ["white", "black", "grey", "violet"],
+    },
     size: { control: "number" },
   },
   args: {
     onClick: fn(),
   },
-} satisfies Meta<typeof Arrow>;
+} satisfies Meta<typeof Cross>;
 
 export default meta;
 
@@ -21,6 +24,6 @@ type Story = StoryObj<typeof meta>;
 
 export const Base: Story = {
   args: {
-    size: 24,
+    variation: "black",
   },
 };

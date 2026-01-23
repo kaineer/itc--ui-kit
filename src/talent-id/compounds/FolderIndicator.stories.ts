@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { FolderIndicator } from "./FolderIndicator";
+import { fn } from "storybook/test";
 
 const meta = {
   title: "TalentId/Compounds/FolderIndicator",
@@ -8,7 +9,9 @@ const meta = {
   argTypes: {
     expanded: { type: "boolean" },
   },
-  args: {},
+  args: {
+    onToggle: fn(),
+  },
 } satisfies Meta<typeof FolderIndicator>;
 
 export default meta;
