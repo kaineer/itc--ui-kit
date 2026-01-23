@@ -3,7 +3,7 @@ import { FolderIndicator } from "./FolderIndicator";
 import { fn } from "storybook/test";
 
 const meta = {
-  title: "TalentId/Compounds/FolderIndicator",
+  title: "TalentId/Compounds/Shared/FolderIndicator",
   component: FolderIndicator,
   parameters: {},
   argTypes: {

@@ -1,0 +1,9 @@
+.roles {
+  display: inline-flex;
+  flex-direction: row;
+  gap: 4px;
+  flex-wrap: wrap;
+
+  /** Testing wrapping in fixed width */
+  width: 318px;
+}

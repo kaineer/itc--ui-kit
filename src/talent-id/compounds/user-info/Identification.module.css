@@ -1,0 +1,39 @@
+.identification {
+  width: 154px;
+  height: 36px;
+
+  font-family: sans-serif;
+  color: #000;
+  opacity: 1;
+
+  &:hover {
+    width: calc(154px * 1.5);
+    background-color: #fff;
+    opacity: 0.8;
+  }
+}
+
+.variation-debug {
+  outline: solid 1px red;
+}
+
+.name {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 24px;
+
+  /** Disable nextline */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.email {
+  font-size: 12px;
+  line-height: 12px;
+
+  /** Disable nextline */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

@@ -18,3 +18,12 @@
 .variation-violet {
   color: #c3a4d5;
 }
+
+.variation-inbadge {
+  margin-right: -4px;
+  margin-left: -2px;
+}
+
+.variation-role {
+  color: #fff;
+}

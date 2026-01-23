@@ -1,0 +1,19 @@
+.plus {
+  color: #42307d;
+  cursor: pointer;
+
+  border-radius: 8px;
+}
+
+.variation-game {
+  color: #42307d;
+}
+
+.variation-role {
+  color: #fff;
+  background-color: #b692f6;
+}
+
+.variation-coin {
+  color: #000;
+}

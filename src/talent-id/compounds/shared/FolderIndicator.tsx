@@ -1,6 +1,6 @@
 import { type MouseEvent } from "react";
 import classes from "./FolderIndicator.module.css";
-import { Arrow } from "../kit/icons/Arrow";
+import { Arrow } from "../../kit/icons/Arrow";
 import { useState } from "react";
 
 interface Props {
