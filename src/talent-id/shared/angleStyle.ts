@@ -18,6 +18,16 @@ export interface BoundedRectangle {
 
 const px = (value: number | string) => String(value) + "px";
 
+/**
+ * Get style to position popup relative to anchor
+ *
+ * @param anchorBr bounding rectangle of anchor
+ * @param anchorAngle anchor angle
+ * @param popupAngle popup angle
+ * @param distance distance from anchor
+ *
+ * @returns Style to position popup
+ */
 export const getAnchoredPopupPosition = (
   anchorBr: BoundedRectangle,
   anchorAngle: AngleType,
