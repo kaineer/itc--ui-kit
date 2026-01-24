@@ -14,8 +14,6 @@ export interface BoundedRectangle {
   top: number;
   right: number;
   bottom: number;
-  width: number;
-  height: number;
 }
 
 const px = (value: number | string) => String(value) + "px";
@@ -24,7 +22,7 @@ export const getAnchoredPopupPosition = (
   anchorBr: BoundedRectangle,
   anchorAngle: AngleType,
   popupAngle: AngleType,
-  distance?: number = 0,
+  distance: number = 0,
 ): AngleStyle => {
   const style: AngleStyle = {
     display: "inline-block",
