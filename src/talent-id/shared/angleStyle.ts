@@ -5,8 +5,6 @@ export interface AngleStyle {
   position: "absolute";
   left?: string;
   top?: string;
-  right?: string;
-  bottom?: string;
 }
 
 export interface BoundedRectangle {
@@ -14,6 +12,8 @@ export interface BoundedRectangle {
   top: number;
   right: number;
   bottom: number;
+  width: number;
+  height: number;
 }
 
 const px = (value: number | string) => String(value) + "px";
@@ -29,46 +29,32 @@ const px = (value: number | string) => String(value) + "px";
  * @returns Style to position popup
  */
 export const getAnchoredPopupPosition = (
-  anchorBr: BoundedRectangle,
+  anchorBr: BoundedRectangle | undefined,
+  popupBr: BoundedRectangle | undefined,
   anchorAngle: AngleType,
   popupAngle: AngleType,
   distance: number = 0,
-): AngleStyle => {
+): AngleStyle | null => {
   const style: AngleStyle = {
     display: "inline-block",
     position: "absolute",
   };
 
+  if (!anchorBr || !popupBr) {
+    return null;
+  }
+
   const { left, right, top, bottom } = anchorBr;
+  const { width, height } = popupBr;
 
   const [a1, a2] = anchorAngle.split("");
   const [p1, p2] = popupAngle.split("");
 
-  const style1 = p1 === "l" ? "left" : "right";
-  const style2 = p2 === "t" ? "top" : "bottom";
+  const anchorX = a1 === "l" ? left : right;
+  const anchorY = a2 === "t" ? top : bottom;
 
-  let value1 = a1 === "l" ? left : right;
-  let value2 = a2 === "t" ? top : bottom;
-
-  if (a2 !== p2) {
-    if (a2 === "t" /* this means p2 == b */) {
-      value2 -= distance;
-    } else {
-      /* i.e. a2 == b && p2 == t */
-      value2 += distance;
-    }
-  }
-
-  if (a1 !== p1) {
-    if (a1 === "l" /* and p1 === r */) {
-      value1 -= distance;
-    } else {
-      value1 += distance;
-    }
-  }
-
-  style[style1] = px(value1);
-  style[style2] = px(value2);
+  style.left = px(anchorX + (p1 === "r" ? -width : a1 === p1 ? 0 : distance));
+  style.top = px(anchorY + (p2 === "b" ? -height : a2 === p2 ? 0 : distance));
 
   return style;
 };

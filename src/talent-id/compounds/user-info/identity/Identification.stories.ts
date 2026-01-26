@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Identification } from "./Identification";
 
 const meta = {
-  title: "TalentId/Compounds/UserInfo/Identification",
+  title: "TalentId/Compounds/UserInfo/Identity/Identification",
   component: Identification,
   parameters: {},
   argTypes: {

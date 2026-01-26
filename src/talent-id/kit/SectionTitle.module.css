@@ -1,0 +1,12 @@
+.title {
+  /** Set height of title */
+  line-height: 18px;
+
+  /** Font size, weight and family */
+  font-size: 14px;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+
+  /** Reset margins */
+  margin: 0;
+}

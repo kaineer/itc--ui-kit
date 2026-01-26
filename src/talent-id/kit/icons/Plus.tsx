@@ -9,7 +9,7 @@ const defaultSize = 20;
 interface Props {
   variation?: string;
   size?: number;
-  onClick?: (e: MouseEvent<HTMLOrSVGElement>) => void;
+  onClick?: (e: MouseEvent<HTMLElement>) => void;
 }
 
 export const Plus = ({

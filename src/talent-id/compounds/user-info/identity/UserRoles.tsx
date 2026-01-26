@@ -1,13 +1,13 @@
 import { type MouseEvent } from "react";
-import { Plus } from "../../kit/icons/Plus";
+import { Plus } from "../../../kit/icons/Plus";
 import { RoleBadge } from "./RoleBadge";
-import type { User } from "./types";
+import type { User } from "../types";
 import classes from "./UserRoles.module.css";
 
 interface Props {
   user: User;
   onRemove?: (role: string) => void;
-  onAdd?: (e: MouseEvent<HTMLOrSVGElement>) => void;
+  onAdd?: (e: MouseEvent<HTMLElement>) => void;
 }
 
 export const UserRoles = ({

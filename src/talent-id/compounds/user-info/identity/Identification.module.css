@@ -1,16 +1,32 @@
-.identification {
-  width: 154px;
+.identification,
+.popupIdentification {
   height: 36px;
 
   font-family: sans-serif;
   color: #000;
   opacity: 1;
+}
 
-  &:hover {
-    width: calc(154px * 1.5);
-    background-color: #fff;
-    opacity: 0.8;
-  }
+.identification {
+  width: 154px;
+  position: relative;
+}
+
+.identification:hover .popupIdentification {
+  display: block;
+}
+
+.popupIdentification {
+  /** Relative position */
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+
+  /* width: calc(154px * 1.5); */
+  width: fit-content;
+  background-color: #fff;
+  opacity: 0.8;
 }
 
 .variation-debug {

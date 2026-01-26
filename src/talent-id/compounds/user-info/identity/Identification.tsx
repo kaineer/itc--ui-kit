@@ -1,8 +1,8 @@
 /** User identification: userName and email */
 import clsx from "clsx";
 import classes from "./Identification.module.css";
-import { type User } from "./types";
-import { getVariationClasses } from "../../shared/classes";
+import { type User } from "../types";
+import { getVariationClasses } from "../../../shared/classes";
 
 interface Props {
   variation?: string;
@@ -15,11 +15,24 @@ export const Identification = ({ variation = "", user }: Props) => {
     classes.identification,
     getVariationClasses(variation, classes),
   );
+  const popupClassName = clsx(
+    classes.popupIdentification,
+    getVariationClasses(variation, classes),
+  );
+
+  const NameAndEmail = () => (
+    <>
+      <div className={classes.name}>{name}</div>
+      <div className={classes.email}>{email}</div>
+    </>
+  );
 
   return (
     <div className={className}>
-      <div className={classes.name}>{name}</div>
-      <div className={classes.email}>{email}</div>
+      <NameAndEmail />
+      <div className={popupClassName}>
+        <NameAndEmail />
+      </div>
     </div>
   );
 };

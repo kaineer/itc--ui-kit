@@ -3,7 +3,7 @@ import { RoleBadge } from "./RoleBadge";
 import { fn } from "storybook/test";
 
 const meta = {
-  title: "TalentId/Compounds/UserInfo/RoleBadge",
+  title: "TalentId/Compounds/UserInfo/Identity/RoleBadge",
   component: RoleBadge,
   parameters: {},
   argTypes: {

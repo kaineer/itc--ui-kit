@@ -3,7 +3,7 @@ import { UserRoles } from "./UserRoles";
 import { fn } from "storybook/test";
 
 const meta = {
-  title: "TalentId/Compounds/UserInfo/UserRoles",
+  title: "TalentId/Compounds/UserInfo/Identity/UserRoles",
   component: UserRoles,
   parameters: {},
   argTypes: {

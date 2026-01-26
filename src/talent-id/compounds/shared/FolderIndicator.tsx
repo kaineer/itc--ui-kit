@@ -11,7 +11,7 @@ interface Props {
 export const FolderIndicator = ({ expanded, onToggle = () => null }: Props) => {
   const [open, setOpen] = useState(expanded);
 
-  const handleClick = (e: MouseEvent<HTMLOrSVGElement>) => {
+  const handleClick = (e: MouseEvent<HTMLElement>) => {
     e.preventDefault();
     const newOpen = !open;
     setOpen(newOpen);

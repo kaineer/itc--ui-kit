@@ -2,4 +2,7 @@
   display: inline-flex;
   height: 46px;
   min-width: 622px;
+  gap: 12px;
+
+  align-items: center;
 }

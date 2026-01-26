@@ -10,7 +10,7 @@ type Direction = "down" | "right";
 interface Props {
   direction?: Direction;
   size?: number;
-  onClick?: (e: MouseEvent<HTMLOrSVGElement>) => void;
+  onClick?: (e: MouseEvent<HTMLElement>) => void;
 }
 
 const defaultSize = 24;

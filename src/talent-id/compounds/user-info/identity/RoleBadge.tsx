@@ -1,6 +1,6 @@
-import { Badge } from "../../kit/Badge";
-import { Cross } from "../../kit/icons/Cross";
-import { roleNames } from "../../shared/roles";
+import { Badge } from "../../../kit/Badge";
+import { Cross } from "../../../kit/icons/Cross";
+import { roleNames } from "../../../shared/roles";
 
 interface Props {
   name: string;

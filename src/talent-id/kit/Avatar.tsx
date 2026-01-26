@@ -4,11 +4,11 @@ import { getVariationClasses } from "../shared/classes";
 import { fetchInitials } from "../shared/initials";
 
 interface Props {
-  variation: string;
+  variation?: string;
   fullname: string;
 }
 
-export const Avatar = ({ fullname, variation }: Props) => {
+export const Avatar = ({ fullname, variation = "" }: Props) => {
   const variationClass = clsx(
     [classes.avatar],
     getVariationClasses(variation, classes),
