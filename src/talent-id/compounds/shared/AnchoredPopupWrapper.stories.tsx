@@ -10,6 +10,7 @@ const meta = {
     anchorAngle: { control: "select", options: ["lt", "rt", "lb", "rb"] },
     popupAngle: { control: "select", options: ["lt", "rt", "lb", "rb"] },
     distance: { control: "number" },
+    isPopupOpen: { control: "boolean" },
   },
   args: {},
 } satisfies Meta<typeof AnchoredPopupWrapper>;
@@ -22,9 +23,36 @@ const children = <Rect width={80} height={200} color="#81a1c1" />;
 
 export const Base: Story = {
   args: {
+    distance: 4,
+    children,
+  },
+};
+
+export const PopupDown: Story = {
+  args: {
+    distance: 4,
+    children,
     anchorAngle: "lb",
     popupAngle: "lt",
-    distance: 0,
+  },
+};
+
+export const PopupRight: Story = {
+  args: {
+    distance: 4,
     children,
+    anchorAngle: "rt",
+    popupAngle: "lt",
+  },
+};
+
+export const PopupLeft: Story = {
+  args: {
+    distance: 4,
+
+    children,
+
+    anchorAngle: "lt",
+    popupAngle: "rt",
   },
 };

@@ -41,10 +41,11 @@ export const Rect = ({
 };
 
 export const AnchoredPopupWrapper = ({
-  anchorAngle,
-  popupAngle,
+  anchorAngle = "rt",
+  popupAngle = "lt",
   distance,
   children,
+  isPopupOpen,
 }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -63,6 +64,7 @@ export const AnchoredPopupWrapper = ({
         anchorAngle={anchorAngle}
         popupAngle={popupAngle}
         distance={distance}
+        isPopupOpen={isPopupOpen}
       >
         {children}
       </AnchoredPopup>

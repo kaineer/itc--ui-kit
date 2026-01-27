@@ -6,6 +6,7 @@ import {
   type AngleStyle,
 } from "../../shared/angleStyle";
 import { createPortal } from "react-dom";
+import { Overlay } from "./Overlay";
 
 type AnchorRef = RefObject<HTMLElement | null>;
 type VoidFn = () => void;
@@ -58,9 +59,10 @@ const useAnchoredPopup = (
 
 export interface Props {
   anchorRef: RefObject<HTMLElement | null>;
-  anchorAngle: AngleType;
-  popupAngle: AngleType;
+  anchorAngle?: AngleType;
+  popupAngle?: AngleType;
   distance?: number;
+  isPopupOpen?: boolean;
 
   children: ReactNode;
 }
@@ -68,9 +70,10 @@ export interface Props {
 export const AnchoredPopup = ({
   children,
   anchorRef,
-  anchorAngle,
-  popupAngle,
+  anchorAngle = "rt",
+  popupAngle = "lt",
   distance = 0,
+  isPopupOpen = false,
 }: Props) => {
   const anchorParams: AnchoredPopupParams = useAnchoredPopup(
     anchorRef,
@@ -83,24 +86,34 @@ export const AnchoredPopup = ({
 
   const ref = useRef<HTMLDivElement>(null);
 
-  const { getAngleStyle } = anchorParams;
+  const { getAngleStyle, isOpen, closePopup, openPopup } = anchorParams;
 
   useEffect(() => {
-    if (ref.current) {
+    if (ref.current && isOpen) {
       setStyle(getAngleStyle(ref.current));
     }
-  }, [ref, getAngleStyle]);
+  }, [isOpen, ref, getAngleStyle]);
 
+  useEffect(() => {
+    (isPopupOpen ? openPopup : closePopup)();
+  }, [isPopupOpen, openPopup, closePopup]);
+
+  // TODO: возможно, есть смысл вынести overlay в отдельный компонент
   return (
     <>
       {createPortal(
-        <div
-          ref={ref}
-          className={classes.anchoredPopup}
-          style={style || undefined}
-        >
-          {children}
-        </div>,
+        isOpen && (
+          <>
+            <Overlay />
+            <div
+              ref={ref}
+              className={classes.anchoredPopup}
+              style={style || undefined}
+            >
+              {children}
+            </div>
+          </>
+        ),
         document.body,
       )}
     </>

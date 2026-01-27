@@ -1,0 +1,14 @@
+.overlay {
+  position: absolute;
+  display: block;
+  left: 0;
+  top: 0;
+
+  width: 100vw;
+  height: 100vh;
+}
+
+.variation-black-05 {
+  opacity: 0.05;
+  background-color: #000;
+}
