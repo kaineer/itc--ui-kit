@@ -6,7 +6,7 @@ import {
   type AngleStyle,
 } from "../../shared/angleStyle";
 import { createPortal } from "react-dom";
-import { Overlay } from "./Overlay";
+import { Overlay } from "../../kit/Overlay";
 
 type AnchorRef = RefObject<HTMLElement | null>;
 type VoidFn = () => void;
@@ -98,7 +98,6 @@ export const AnchoredPopup = ({
     (isPopupOpen ? openPopup : closePopup)();
   }, [isPopupOpen, openPopup, closePopup]);
 
-  // TODO: возможно, есть смысл вынести overlay в отдельный компонент
   return (
     <>
       {createPortal(
