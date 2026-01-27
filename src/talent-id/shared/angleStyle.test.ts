@@ -29,12 +29,14 @@ const testAngles = (
   popupAngle: AngleType,
   distance: number = 0,
 ) => {
-  return getAnchoredPopupPosition(
-    testAnchorBr,
-    testPopupBr,
-    anchorAngle,
-    popupAngle,
-    distance,
+  return (
+    getAnchoredPopupPosition(
+      testAnchorBr,
+      testPopupBr,
+      anchorAngle,
+      popupAngle,
+      distance,
+    ) || { display: null, position: null, left: null, top: null }
   );
 };
 
@@ -82,6 +84,13 @@ describe("getAnchoredPopupPosition()", () => {
 
       expect(left).toBe("108px");
       expect(top).toBe("108px");
+    });
+
+    it("should add for left side popup", () => {
+      const { left, top } = testAngles("lt", "rt", 8);
+
+      expect(left).toBe("-58px");
+      expect(top).toBe("50px");
     });
   });
 });

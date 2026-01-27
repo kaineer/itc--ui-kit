@@ -1,6 +1,6 @@
 import classes from "./AnchoredPopup.module.css";
-import { useRef, type ReactNode, type RefObject } from "react";
-import { useState } from "react";
+import { useEffect, useRef, type ReactNode, type RefObject } from "react";
+import { useState, useCallback } from "react";
 import {
   getAnchoredPopupPosition,
   type AngleStyle,
@@ -16,7 +16,7 @@ interface AnchoredPopupParams {
   openPopup: VoidFn;
   isOpen: boolean;
   anchorRef: AnchorRef;
-  getAngleStyle: (popupRef: RefObject<HTMLElement | null>) => AngleStyle | null;
+  getAngleStyle: (popup: HTMLElement | null) => AngleStyle | null;
 }
 
 const useAnchoredPopup = (
@@ -27,27 +27,25 @@ const useAnchoredPopup = (
 ): AnchoredPopupParams => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  const closePopup = () => setIsOpen(false);
-  const openPopup = () => setIsOpen(true);
-
-  let getAngleStyle: (
-    popupRef: RefObject<HTMLElement | null>,
-  ) => AngleStyle | null = () => null;
-
-  if (anchorRef.current) {
-    getAngleStyle = (popupRef: RefObject<HTMLElement | null>) => {
-      if (popupRef) {
+  const getAngleStyle = useCallback(
+    (popup: HTMLElement | null): AngleStyle | null => {
+      if (popup && anchorRef?.current) {
         return getAnchoredPopupPosition(
-          anchorRef?.current?.getBoundingClientRect(),
-          popupRef?.current?.getBoundingClientRect(),
+          anchorRef.current?.getBoundingClientRect(),
+          popup.getBoundingClientRect(),
           anchorAngle,
           popupAngle,
           distance,
         );
       }
+
       return null;
-    };
-  }
+    },
+    [anchorRef, anchorAngle, popupAngle, distance],
+  );
+
+  const closePopup = () => setIsOpen(false);
+  const openPopup = () => setIsOpen(true);
 
   return {
     closePopup,
@@ -58,11 +56,11 @@ const useAnchoredPopup = (
   };
 };
 
-interface Props {
+export interface Props {
   anchorRef: RefObject<HTMLElement | null>;
   anchorAngle: AngleType;
   popupAngle: AngleType;
-  distance: number;
+  distance?: number;
 
   children: ReactNode;
 }
@@ -72,7 +70,7 @@ export const AnchoredPopup = ({
   anchorRef,
   anchorAngle,
   popupAngle,
-  distance,
+  distance = 0,
 }: Props) => {
   const anchorParams: AnchoredPopupParams = useAnchoredPopup(
     anchorRef,
@@ -81,11 +79,17 @@ export const AnchoredPopup = ({
     distance,
   );
 
+  const [style, setStyle] = useState<AngleStyle | null>(null);
+
   const ref = useRef<HTMLDivElement>(null);
 
   const { getAngleStyle } = anchorParams;
 
-  const style = ref.current && getAngleStyle(ref);
+  useEffect(() => {
+    if (ref.current) {
+      setStyle(getAngleStyle(ref.current));
+    }
+  }, [ref, getAngleStyle]);
 
   return (
     <>

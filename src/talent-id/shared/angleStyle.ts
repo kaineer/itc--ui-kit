@@ -53,8 +53,21 @@ export const getAnchoredPopupPosition = (
   const anchorX = a1 === "l" ? left : right;
   const anchorY = a2 === "t" ? top : bottom;
 
-  style.left = px(anchorX + (p1 === "r" ? -width : a1 === p1 ? 0 : distance));
-  style.top = px(anchorY + (p2 === "b" ? -height : a2 === p2 ? 0 : distance));
+  const horizontalShift: { [id: string]: number } = {
+    ll: anchorX,
+    lr: anchorX - width - distance,
+    rl: anchorX + distance,
+    rr: anchorX - width,
+  };
+  const verticalShift: { [id: string]: number } = {
+    tt: anchorY,
+    tb: anchorY - height - distance,
+    bt: anchorY + distance,
+    bb: anchorY - height,
+  };
+
+  style.left = px(horizontalShift[a1 + p1]);
+  style.top = px(verticalShift[a2 + p2]);
 
   return style;
 };
