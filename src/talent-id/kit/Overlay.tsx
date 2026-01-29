@@ -5,7 +5,7 @@ import { getVariationClasses } from "../shared/classes";
 
 interface Props {
   variation?: string;
-  onClick?: (e: MouseEvent<HTMLDivElement>) => null;
+  onClick?: (e: MouseEvent<HTMLDivElement>) => void;
 }
 
 export const Overlay = ({

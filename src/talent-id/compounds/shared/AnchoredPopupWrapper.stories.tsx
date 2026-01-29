@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { AnchoredPopupWrapper, Rect } from "./AnchoredPopupWrapper";
-// import { fn } from "storybook/test";
 
 const meta = {
   title: "TalentId/Compounds/Shared/AnchoredPopup",
@@ -10,7 +9,7 @@ const meta = {
     anchorAngle: { control: "select", options: ["lt", "rt", "lb", "rb"] },
     popupAngle: { control: "select", options: ["lt", "rt", "lb", "rb"] },
     distance: { control: "number" },
-    isPopupOpen: { control: "boolean" },
+    dismissable: { control: "boolean" },
   },
   args: {},
 } satisfies Meta<typeof AnchoredPopupWrapper>;

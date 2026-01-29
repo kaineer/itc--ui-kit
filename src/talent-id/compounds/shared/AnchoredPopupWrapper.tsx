@@ -1,13 +1,18 @@
 // For stories only
-import { useRef, type RefObject } from "react";
-import {
-  type Props as AnchoredPopupProps,
-  AnchoredPopup,
-} from "./AnchoredPopup";
+import { useRef, type ReactNode, type RefObject } from "react";
+import { AnchoredPopup } from "./AnchoredPopup";
+import classes from "./AnchorPopupWrapper.module.css";
+import { useAnchoredPopup } from "../../hooks/useAnchoredPopup";
+import type { AngleType } from "../../shared/angleStyle";
+import { px } from "../../shared/px";
 
-type Props = Omit<AnchoredPopupProps, "anchorRef">;
-
-const px = (value: number) => String(value) + "px";
+interface Props {
+  anchorAngle?: AngleType;
+  popupAngle?: AngleType;
+  distance?: number;
+  children: ReactNode;
+  dismissable?: boolean;
+}
 
 interface RectProps {
   ref?: RefObject<HTMLDivElement | null>;
@@ -16,6 +21,7 @@ interface RectProps {
   color: string;
   absolute?: boolean;
   style?: { [id: string]: string };
+  onClick?: () => void;
 }
 
 export const Rect = ({
@@ -25,6 +31,7 @@ export const Rect = ({
   color,
   absolute,
   style,
+  onClick = () => null,
 }: RectProps) => {
   return (
     <div
@@ -36,6 +43,7 @@ export const Rect = ({
         backgroundColor: color,
         position: absolute ? "absolute" : "relative",
       }}
+      onClick={onClick}
     ></div>
   );
 };
@@ -43,31 +51,28 @@ export const Rect = ({
 export const AnchoredPopupWrapper = ({
   anchorAngle = "rt",
   popupAngle = "lt",
-  distance,
+  distance = 0,
+  dismissable = false,
   children,
-  isPopupOpen,
 }: Props) => {
-  const ref = useRef<HTMLDivElement>(null);
+  const anchorRef = useRef<HTMLButtonElement>(null);
 
-  return (
-    <>
-      <Rect
-        ref={ref}
-        width={200}
-        height={80}
-        absolute={true}
-        style={{ left: "200px", top: "50px" }}
-        color="#5e81ac"
-      />
-      <AnchoredPopup
-        anchorRef={ref}
-        anchorAngle={anchorAngle}
-        popupAngle={popupAngle}
-        distance={distance}
-        isPopupOpen={isPopupOpen}
-      >
-        {children}
-      </AnchoredPopup>
-    </>
-  );
+  const popupParams = useAnchoredPopup({
+    anchorRef,
+    anchorAngle,
+    popupAngle,
+    distance,
+    dismissable,
+  });
+
+  const { clickOverlay, openPopup } = popupParams;
+
+  return [
+    <button ref={anchorRef} className={classes.anchor} onClick={openPopup}>
+      click me
+    </button>,
+    <AnchoredPopup popupParameters={popupParams} onOverlayClick={clickOverlay}>
+      {children}
+    </AnchoredPopup>,
+  ];
 };

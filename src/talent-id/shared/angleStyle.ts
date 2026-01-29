@@ -1,3 +1,5 @@
+import { px } from "./px";
+
 export type AngleType = "lt" | "rt" | "lb" | "rb";
 
 export interface AngleStyle {
@@ -15,8 +17,6 @@ export interface BoundedRectangle {
   width: number;
   height: number;
 }
-
-const px = (value: number | string) => String(value) + "px";
 
 /**
  * Get style to position popup relative to anchor
