@@ -9,6 +9,7 @@ const meta = {
   argTypes: {
     title: { control: "text" },
     variation: { control: "text" },
+    disabled: { control: "boolean" },
   },
   args: {
     onClick: fn(),
@@ -23,5 +24,13 @@ export const Base: Story = {
   args: {
     title: "Сбросить роли",
     variation: "bottom",
+  },
+};
+
+export const Disabled: Story = {
+  args: {
+    title: "Заблокированная кнопка",
+    variation: "bottom",
+    disabled: true,
   },
 };
