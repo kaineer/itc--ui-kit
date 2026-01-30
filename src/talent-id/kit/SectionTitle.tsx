@@ -1,9 +1,17 @@
+import { getVariationClasses } from "../shared/classes";
 import classes from "./SectionTitle.module.css";
+import clsx from "clsx";
 
 interface Props {
   title: string;
+  variation?: string;
 }
 
-export const SectionTitle = ({ title }: Props) => {
-  return <h1 className={classes.title}>{title}</h1>;
+export const SectionTitle = ({ title, variation = "" }: Props) => {
+  const className = clsx(
+    classes.title,
+    getVariationClasses(variation, classes),
+  );
+
+  return <h1 className={className}>{title}</h1>;
 };

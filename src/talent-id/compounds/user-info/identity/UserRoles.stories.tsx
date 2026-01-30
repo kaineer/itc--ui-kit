@@ -20,7 +20,7 @@ const meta = {
     const [user, setUser] = useState<User>(args.user);
 
     const handleRemove = (name: string) => {
-      const roles = user.roles;
+      const roles = user.roles || [];
       setUser((prev) => ({ ...prev, roles: roles.filter((n) => n !== name) }));
     };
 

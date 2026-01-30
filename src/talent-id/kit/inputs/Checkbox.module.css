@@ -1,0 +1,22 @@
+.checkbox {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #53389e;
+}
+
+.wrapper {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: transparent;
+
+  width: 24px;
+  height: 24px;
+}

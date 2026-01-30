@@ -3,7 +3,7 @@ import { Button } from "./Button";
 import { fn } from "storybook/test";
 
 const meta = {
-  title: "TalentId/Kit/Button",
+  title: "TalentId/Kit/Inputs/Button",
   component: Button,
   parameters: {},
   argTypes: {

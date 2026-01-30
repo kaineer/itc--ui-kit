@@ -15,7 +15,7 @@ export const UserRoles = ({
   onRemove = () => null,
   onAdd = () => null,
 }: Props) => {
-  const { roles } = user;
+  const { roles = [] } = user;
 
   return (
     <div className={classes.roles}>

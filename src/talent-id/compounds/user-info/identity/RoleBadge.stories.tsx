@@ -8,7 +8,7 @@ const meta = {
   parameters: {},
   argTypes: {
     name: {
-      type: "select",
+      control: "select",
       options: ["admin", "mentor", "methodist", "game_diz", "player"],
     },
   },

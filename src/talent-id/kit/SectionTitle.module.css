@@ -10,3 +10,8 @@
   /** Reset margins */
   margin: 0;
 }
+
+.variation-role-form {
+  /** line-height: 18px */
+  font-size: 15px;
+}

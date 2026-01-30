@@ -1,0 +1,14 @@
+.roleRow {
+  height: 24px;
+  display: flex;
+  flex-direction: row;
+}
+
+/** TODO: move to separate file */
+.container {
+  padding: 8px;
+  border-radius: 8px;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 8px;
+}

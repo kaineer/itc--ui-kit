@@ -1,6 +1,6 @@
+import { getVarious, type VariousProps } from "../../compounds/shared/Various";
 import classes from "./Button.module.css";
 import { useCallback, type MouseEvent } from "react";
-import { getVarious, type VariousProps } from "../compounds/shared/Various";
 
 type Props = VariousProps & {
   title?: string;
@@ -23,7 +23,7 @@ export const Button = ({
     [disabled, onClick],
   );
 
-  const mixedVariation: string = variation + (disabled && " disabled");
+  const mixedVariation: string = variation + (disabled ? " disabled" : "");
 
   return (
     <ButtonWrapper
