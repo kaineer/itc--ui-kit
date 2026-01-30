@@ -1,14 +1,16 @@
 import classes from "./UpdateUserRoles.module.css";
 import type { User, UserRole } from "../types";
 import { Checkbox } from "../../../kit/inputs/Checkbox";
-import { useCallback, useRef, useState, type ReactNode } from "react";
+import { useCallback, useRef, useState } from "react";
 import { Label } from "../../../kit/inputs/Label";
 import { rolesInOrder, roleNames } from "../../../shared/roles";
 import { SectionTitle } from "../../../kit/SectionTitle";
 import { Button } from "../../../kit/inputs/Button";
+import { PopupContainer } from "../../shared/PopupContainer";
 
 interface Props {
   user: User;
+  onRolesUpdate?: (newRoles: UserRole[]) => void;
 }
 
 interface RowProps {
@@ -35,15 +37,10 @@ const UserRolesRow = ({ label, slug, value, onChange }: RowProps) => {
   );
 };
 
-interface ContainerProps {
-  children: ReactNode;
-}
-
-const PopupContainer = ({ children }: ContainerProps) => {
-  return <div className={classes.container}>{children}</div>;
-};
-
-export const UpdateUserRoles = ({ user }: Props) => {
+export const UpdateUserRoles = ({
+  user,
+  onRolesUpdate = () => null,
+}: Props) => {
   const [roles, setRoles] = useState<UserRole[]>(user.roles || []);
 
   const handleChange = useCallback(
@@ -57,6 +54,10 @@ export const UpdateUserRoles = ({ user }: Props) => {
     [roles, setRoles],
   );
 
+  const handleRolesUpdate = useCallback(() => {
+    onRolesUpdate(roles);
+  }, [roles, onRolesUpdate]);
+
   return (
     <PopupContainer>
       <SectionTitle title="Роли" variation="role-form" />
@@ -68,7 +69,9 @@ export const UpdateUserRoles = ({ user }: Props) => {
           onChange={handleChange}
         />
       ))}
-      <Button variation="bottom">Сбросить роли</Button>
+      <Button onClick={handleRolesUpdate} variation="bottom">
+        Изменить роли
+      </Button>
     </PopupContainer>
   );
 };

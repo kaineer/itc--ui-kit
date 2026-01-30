@@ -1,9 +1,10 @@
 import { Badge } from "../../../kit/Badge";
 import { Cross } from "../../../kit/icons/Cross";
 import { roleNames } from "../../../shared/roles";
+import type { UserRole } from "../types";
 
 interface Props {
-  name: string;
+  name: UserRole;
   onRemove?: (name: string) => void;
 }
 

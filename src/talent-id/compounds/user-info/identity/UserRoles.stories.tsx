@@ -24,7 +24,17 @@ const meta = {
       setUser((prev) => ({ ...prev, roles: roles.filter((n) => n !== name) }));
     };
 
-    return <UserRoles user={user} onRemove={handleRemove} />;
+    const handleUpdate = (roles: UserRole[]) => {
+      setUser((prev) => ({ ...prev, roles }));
+    };
+
+    return (
+      <UserRoles
+        user={user}
+        onRemove={handleRemove}
+        onRolesUpdate={handleUpdate}
+      />
+    );
   },
 } satisfies Meta<typeof UserRoles>;
 

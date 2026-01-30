@@ -8,3 +8,8 @@
   width: 318px;
   height: 46px;
 }
+
+.plusContainer {
+  display: flex;
+  height: 21px;
+}
