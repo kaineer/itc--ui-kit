@@ -16,7 +16,7 @@
   height: 32px;
 }
 
-.disabled {
+.variation-disabled {
   color: #a4a7ae;
   background-color: #f5f5f5;
   &:hover {

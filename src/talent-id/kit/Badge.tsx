@@ -1,24 +1,16 @@
 import classes from "./Badge.module.css";
-import clsx from "clsx";
-import { getVariationClasses } from "../shared/classes";
-
 import { type ReactNode } from "react";
+import { getVarious, type VariousProps } from "../compounds/shared/Various";
 
-interface Props {
-  variation?: string;
-  title: string;
-  children?: ReactNode;
-}
+type Props = VariousProps & { title: string };
 
-export const Badge = ({ variation = "", title, children }: Props) => {
-  const className = clsx(
-    [classes.badge],
-    getVariationClasses(variation, classes),
-  );
+const BadgeWrapper = getVarious("badge");
 
+export const Badge = ({ variation = "role", title, children }: Props) => {
   return (
-    <div className={className}>
-      {title} {children || null}
-    </div>
+    <BadgeWrapper variation={variation} classes={classes}>
+      {title}
+      {children}
+    </BadgeWrapper>
   );
 };

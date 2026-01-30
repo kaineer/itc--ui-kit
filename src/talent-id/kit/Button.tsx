@@ -1,34 +1,38 @@
 import classes from "./Button.module.css";
-import clsx from "clsx";
-import { getVariationClasses } from "../shared/classes";
-import { useCallback } from "react";
+import { useCallback, type MouseEvent } from "react";
+import { getVarious, type VariousProps } from "../compounds/shared/Various";
 
-interface Props {
-  variation?: string;
-  title: string;
+type Props = VariousProps & {
+  title?: string;
   disabled?: boolean;
-  onClick?: () => void;
-}
+};
+
+const ButtonWrapper = getVarious("button");
 
 export const Button = ({
-  title,
+  title = "",
   variation = "",
   onClick = () => null,
   disabled = false,
+  children,
 }: Props) => {
-  const className = clsx(
-    classes.button,
-    getVariationClasses(variation, classes),
-    { [classes.disabled]: Boolean(disabled) },
+  const handleClick = useCallback(
+    (e: MouseEvent<HTMLDivElement>) => {
+      if (!disabled) onClick(e);
+    },
+    [disabled, onClick],
   );
 
-  const handleClick = useCallback(() => {
-    if (!disabled) onClick();
-  }, [disabled, onClick]);
+  const mixedVariation: string = variation + (disabled && " disabled");
 
   return (
-    <div className={className} onClick={handleClick}>
+    <ButtonWrapper
+      variation={mixedVariation}
+      onClick={handleClick}
+      classes={classes}
+    >
       {title}
-    </div>
+      {children}
+    </ButtonWrapper>
   );
 };

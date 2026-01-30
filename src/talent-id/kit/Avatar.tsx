@@ -1,19 +1,17 @@
 import classes from "./Avatar.module.css";
-import clsx from "clsx";
-import { getVariationClasses } from "../shared/classes";
 import { fetchInitials } from "../shared/initials";
+import { getVarious, type VariousProps } from "../compounds/shared/Various";
 
-interface Props {
-  variation?: string;
-  fullname: string;
-}
+type Props = VariousProps & { fullname: string };
+
+const AvatarWrapper = getVarious("avatar");
 
 export const Avatar = ({ fullname, variation = "" }: Props) => {
-  const variationClass = clsx(
-    [classes.avatar],
-    getVariationClasses(variation, classes),
-  );
   const initials = fetchInitials(fullname);
 
-  return <div className={variationClass}>{initials}</div>;
+  return (
+    <AvatarWrapper variation={variation} classes={classes}>
+      {initials}
+    </AvatarWrapper>
+  );
 };

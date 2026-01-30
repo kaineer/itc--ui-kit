@@ -7,9 +7,5 @@ const config: StorybookConfig = {
     name: "@storybook/react-vite",
     options: {},
   },
-  env: (config) => ({
-    ...config,
-    EDITOR: "/home/kaineer/.local/bin/zed",
-  }),
 };
 export default config;

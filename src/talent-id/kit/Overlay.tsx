@@ -1,20 +1,17 @@
-import clsx from "clsx";
 import classes from "./Overlay.module.css";
-import { type MouseEvent } from "react";
-import { getVariationClasses } from "../shared/classes";
+import { getVarious, type VariousProps } from "../compounds/shared/Various";
 
-interface Props {
-  variation?: string;
-  onClick?: (e: MouseEvent<HTMLDivElement>) => void;
-}
+const OverlayWrapper = getVarious("overlay");
 
 export const Overlay = ({
   variation = "black-05",
   onClick = () => null,
-}: Props) => {
-  const className = clsx(
-    classes.overlay,
-    getVariationClasses(variation, classes),
+}: VariousProps) => {
+  return (
+    <OverlayWrapper
+      classes={classes}
+      onClick={onClick}
+      variation={variation}
+    ></OverlayWrapper>
   );
-  return <div onClick={onClick} className={className}></div>;
 };

@@ -30,7 +30,7 @@ export const Admin: Story = {
 
 export const Player: Story = {
   args: {
-    name: "admin",
+    name: "player",
   },
   name: "Игрок",
 };

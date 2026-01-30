@@ -6,10 +6,6 @@
 
   border-radius: 8px;
 
-  /** Default brand colors */
-  background-color: #6941c6;
-  color: #fff;
-
   font-family: sans-serif;
   font-size: 14px;
   font-weight: 500;
@@ -20,8 +16,7 @@
   align-items: center;
 }
 
-.role {
-  /** Default brand colors */
+.variation-role {
   background-color: #6941c6;
   color: #fff;
 }
