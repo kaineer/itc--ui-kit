@@ -8,7 +8,6 @@ const meta = {
   parameters: {},
   argTypes: {
     direction: { control: "select", options: ["down", "right"] },
-    size: { control: "number" },
   },
   args: {
     onClick: fn(),
@@ -20,7 +19,5 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Base: Story = {
-  args: {
-    size: 24,
-  },
+  args: {},
 };

@@ -1,23 +1,16 @@
 import classes from "./Plus.module.css";
-import { type MouseEvent } from "react";
 import { FaPlus } from "react-icons/fa6";
-import { getVariationClasses } from "../../shared/classes";
-import clsx from "clsx";
+import { getVarious, type VariousProps } from "../../compounds/shared/Various";
 
-const defaultSize = 20;
+type Props = VariousProps;
 
-interface Props {
-  variation?: string;
-  size?: number;
-  onClick?: (e: MouseEvent<HTMLElement>) => void;
-}
+const PlusWrapper = getVarious("plus");
 
-export const Plus = ({
-  variation = "",
-  size = defaultSize,
-  onClick = () => null,
-}: Props) => {
-  const className = clsx(classes.plus, getVariationClasses(variation, classes));
-
-  return <FaPlus className={className} size={size} onClick={onClick} />;
+export const Plus = ({ variation = "", onClick = () => null }: Props) => {
+  // NOTE: this way is better
+  return (
+    <PlusWrapper variation={variation} classes={classes} onClick={onClick}>
+      <FaPlus />
+    </PlusWrapper>
+  );
 };

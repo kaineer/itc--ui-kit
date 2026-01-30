@@ -3,8 +3,7 @@ import { type MouseEvent } from "react";
 import { RxCross2 } from "react-icons/rx";
 import { getVariationClasses } from "../../shared/classes";
 import clsx from "clsx";
-
-const defaultSize = 16;
+import { getVarious } from "../../compounds/shared/Various";
 
 interface Props {
   variation?: string;
@@ -12,15 +11,12 @@ interface Props {
   onClick: (e: MouseEvent<HTMLElement>) => void;
 }
 
-export const Cross = ({
-  variation = "",
-  size = defaultSize,
-  onClick = () => null,
-}: Props) => {
-  const className = clsx(
-    classes.cross,
-    getVariationClasses(variation, classes),
-  );
+const CrossWrapper = getVarious("cross");
 
-  return <RxCross2 className={className} size={size} onClick={onClick} />;
+export const Cross = ({ variation = "", onClick = () => null }: Props) => {
+  return (
+    <CrossWrapper variation={variation} classes={classes} onClick={onClick}>
+      <RxCross2 />
+    </CrossWrapper>
+  );
 };

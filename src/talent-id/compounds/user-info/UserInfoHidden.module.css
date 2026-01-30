@@ -1,0 +1,16 @@
+.container {
+  margin-left: 24px;
+  display: inline-flex;
+  flex-direction: column;
+
+  gap: 8px;
+
+  width: 198px;
+}
+
+.balance {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 4px;
+}

@@ -16,8 +16,16 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Base: Story = {
+export const Role: Story = {
   args: {
     title: "badge",
+    variation: "role",
+  },
+};
+
+export const Currency: Story = {
+  args: {
+    title: "Марки: 0",
+    variation: "balance",
   },
 };

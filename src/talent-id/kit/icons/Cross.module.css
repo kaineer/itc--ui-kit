@@ -1,6 +1,14 @@
 .cross {
   color: #fff;
   cursor: pointer;
+
+  display: inline-flex;
+
+  /** from defaultSize */
+  width: 16px;
+  height: 16px;
+  align-items: center; /* Centers vertically (cross axis) */
+  justify-content: center; /* Centers horizontally (main axis) */
 }
 
 .variation-black {

@@ -1,4 +1,12 @@
 .arrow {
   opacity: 1;
   color: #000;
+
+  display: inline-flex;
+
+  /** from defaultSize */
+  width: 24px;
+  height: 24px;
+  align-items: center; /* Centers vertically (cross axis) */
+  justify-content: center; /* Centers horizontally (main axis) */
 }

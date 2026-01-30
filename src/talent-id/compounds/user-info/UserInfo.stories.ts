@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { UserInfo } from "./UserInfo";
 import { fn } from "storybook/test";
+import { currencyTypes as typeNames, richUser } from "./mocks";
 
 const meta = {
   title: "TalentId/Compounds/UserInfo/UserInfo",
@@ -24,7 +25,9 @@ export const Base: Story = {
       userName: "John Doe",
       email: "john@doe.com",
       roles: ["admin"],
+      balance: richUser.balance,
     },
+    typeNames,
   },
 };
 
@@ -35,6 +38,8 @@ export const SuperUser: Story = {
       userName: "Super User",
       email: "su@itc.ru",
       roles: ["admin", "game_diz", "mentor", "methodist", "player"],
+      balance: richUser.balance,
     },
+    typeNames,
   },
 };

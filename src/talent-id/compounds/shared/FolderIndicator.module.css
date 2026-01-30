@@ -1,10 +1,12 @@
 .folderIndicator {
   /** Fixed size */
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
 
   /** Center content */
   display: flex;
   justify-content: center;
   align-items: center;
+
+  cursor: pointer;
 }

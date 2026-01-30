@@ -1,8 +1,15 @@
 .plus {
+  display: inline-flex;
   color: #42307d;
   cursor: pointer;
 
+  width: 20px;
+  height: 20px;
+  align-items: center; /* Centers vertically (cross axis) */
+  justify-content: center; /* Centers horizontally (main axis) */
+
   border-radius: 8px;
+  background-color: transparent;
 }
 
 .variation-game {
