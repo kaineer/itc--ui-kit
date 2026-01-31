@@ -12,15 +12,18 @@ interface Props {
 export const UserInfoHidden = ({ user, typeNames }: Props) => {
   const { balance = {} } = user;
 
+  const typeKeys = Object.keys(typeNames).sort((a, b) => Number(a) - Number(b));
+
   return (
     <div className={classes.container}>
       <SectionTitle title="Валюта" />
       <div className={classes.balance}>
-        {Object.keys(typeNames).map((name: CurrencyId) => {
+        {typeKeys.map((id: CurrencyId) => {
           return (
             <Badge
+              key={"currency-" + id}
               variation="balance"
-              title={typeNames[name] + ": " + (balance[name] || 0)}
+              title={typeNames[id] + ": " + (balance[id] || 0)}
             />
           );
         })}

@@ -14,8 +14,8 @@ interface Props {
 
 type ArrowDirection = "right" | "down";
 const arrows: Record<ArrowDirection, () => ReactNode> = {
-  right: () => <MdOutlineKeyboardArrowRight />,
-  down: () => <MdOutlineKeyboardArrowDown />,
+  right: () => <MdOutlineKeyboardArrowRight size={32} />,
+  down: () => <MdOutlineKeyboardArrowDown size={32} />,
 };
 
 export const Arrow = ({ direction = "right", onClick = () => null }: Props) => {

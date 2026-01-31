@@ -1,0 +1,26 @@
+.icon {
+  display: inline-flex;
+  color: #42307d;
+  cursor: pointer;
+
+  width: 20px;
+  height: 20px;
+  align-items: center; /* Centers vertically (cross axis) */
+  justify-content: center; /* Centers horizontally (main axis) */
+
+  border-radius: 8px;
+  background-color: transparent;
+}
+
+.variation-game {
+  color: #42307d;
+}
+
+.variation-role {
+  color: #fff;
+  background-color: #b692f6;
+}
+
+.variation-coin {
+  color: #000;
+}

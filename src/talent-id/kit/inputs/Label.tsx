@@ -4,7 +4,7 @@ import { getVarious, type VariousProps } from "../../compounds/shared/Various";
 import type { RefObject } from "react";
 import { useCallback } from "react";
 
-const LabelWrapper = getVarious("label");
+const LabelWrapper = getVarious("label", classes);
 
 type Props = VariousProps & {
   ref?: RefObject<HTMLElement | null>;
@@ -18,7 +18,7 @@ export const Label = ({ children, variation, ref }: Props) => {
   }, [ref]);
 
   return (
-    <LabelWrapper variation={variation} onClick={handleClick} classes={classes}>
+    <LabelWrapper variation={variation} onClick={handleClick}>
       {children}
     </LabelWrapper>
   );

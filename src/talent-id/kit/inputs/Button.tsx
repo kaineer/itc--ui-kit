@@ -7,7 +7,7 @@ type Props = VariousProps & {
   disabled?: boolean;
 };
 
-const ButtonWrapper = getVarious("button");
+const ButtonWrapper = getVarious("button", classes);
 
 export const Button = ({
   title = "",
@@ -26,11 +26,7 @@ export const Button = ({
   const mixedVariation: string = variation + (disabled ? " disabled" : "");
 
   return (
-    <ButtonWrapper
-      variation={mixedVariation}
-      onClick={handleClick}
-      classes={classes}
-    >
+    <ButtonWrapper variation={mixedVariation} onClick={handleClick}>
       {title}
       {children}
     </ButtonWrapper>

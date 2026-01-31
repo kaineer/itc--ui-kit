@@ -1,5 +1,5 @@
 import { useRef, type MouseEvent } from "react";
-import { Plus } from "../../../kit/icons/Plus";
+import { Ellipsis } from "../../../kit/icons/Ellipsis";
 import { RoleBadge } from "./RoleBadge";
 import type { User, UserRole } from "../types";
 import classes from "./UserRoles.module.css";
@@ -42,7 +42,7 @@ export const UserRoles = ({
         <RoleBadge name={role} onRemove={onRemove} />
       ))}
       <div ref={plusRef} className={classes.plusContainer}>
-        <Plus variation="role" onClick={openPopup} />
+        <Ellipsis variation="role" onClick={openPopup} />
       </div>
       <AnchoredPopup
         popupParameters={anchorParameters}

@@ -4,12 +4,11 @@ import { getVarious, type VariousProps } from "../../compounds/shared/Various";
 
 type Props = VariousProps;
 
-const PlusWrapper = getVarious("plus");
+const PlusWrapper = getVarious("plus", classes);
 
 export const Plus = ({ variation = "", onClick = () => null }: Props) => {
-  // NOTE: this way is better
   return (
-    <PlusWrapper variation={variation} classes={classes} onClick={onClick}>
+    <PlusWrapper variation={variation} onClick={onClick}>
       <FaPlus />
     </PlusWrapper>
   );

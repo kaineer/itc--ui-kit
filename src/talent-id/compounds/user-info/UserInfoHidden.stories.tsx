@@ -15,10 +15,22 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 import { richUser, currencyTypes } from "./mocks";
+const emptyBalanceUser = {
+  ...richUser,
+  balance: {},
+};
 
 export const Base: Story = {
   args: {
     user: richUser,
+    typeNames: currencyTypes,
+  },
+};
+
+export const EmptyBalance: Story = {
+  name: "Без денег",
+  args: {
+    user: emptyBalanceUser,
     typeNames: currencyTypes,
   },
 };
