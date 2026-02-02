@@ -14,6 +14,7 @@ const meta = {
   args: {
     onRemove: fn(),
     onAdd: fn(),
+    onRolesUpdate: fn(),
   },
   render: (args) => {
     // eslint-disable-next-line react-hooks/rules-of-hooks

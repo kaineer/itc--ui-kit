@@ -29,3 +29,10 @@ export const Currency: Story = {
     variation: "balance",
   },
 };
+
+export const Organization: Story = {
+  args: {
+    title: "organization",
+    variation: "organization",
+  },
+};

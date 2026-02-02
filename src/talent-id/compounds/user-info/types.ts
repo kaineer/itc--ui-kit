@@ -1,5 +1,6 @@
 export type UserRole = "admin" | "player" | "methodist" | "mentor" | "game_diz";
 export type CurrencyId = string;
+export type OrganizationId = string;
 
 export type Balance = Record<CurrencyId, number>;
 
@@ -9,6 +10,13 @@ export interface User {
   email: string;
   roles?: UserRole[];
   balance?: Balance;
+  organizations?: Organization[];
+}
+
+export interface Organization {
+  id: OrganizationId;
+  name: string;
+  contact?: string;
 }
 
 export type CurrencyTypes = Record<CurrencyId, string>;
