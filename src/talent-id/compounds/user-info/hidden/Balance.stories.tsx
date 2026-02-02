@@ -3,7 +3,7 @@ import { Balance } from "./Balance";
 // import { fn } from "storybook/test";
 
 const meta = {
-  title: "TalentId/Compounds/UserInfo/Balance",
+  title: "TalentId/Compounds/UserInfo/Hidden/Balance",
   component: Balance,
   parameters: {},
   argTypes: {},

@@ -60,7 +60,7 @@ export const UpdateUserRoles = ({
 
   return (
     <PopupContainer>
-      <SectionTitle title="Роли" variation="role-form" />
+      <SectionTitle title="Роли" variation="popup-title" />
       {rolesInOrder.map((role: UserRole) => (
         <UserRolesRow
           label={roleNames[role]}

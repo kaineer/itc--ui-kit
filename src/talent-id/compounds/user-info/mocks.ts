@@ -32,3 +32,22 @@ export const organization2: Organization = {
   id: "bbb-bbb-bbb",
   name: "Школа",
 };
+
+export const organization3: Organization = {
+  id: "ccc-ccc-ccc",
+  name: "Детский сад",
+};
+
+export const userWithOrganizations: User = {
+  userId: "",
+  userName: "",
+  email: "",
+  organizations: [defaultOrganization, organization1, organization2],
+};
+
+export const organizationList: Organization[] = [
+  defaultOrganization,
+  organization1,
+  organization2,
+  organization3,
+];

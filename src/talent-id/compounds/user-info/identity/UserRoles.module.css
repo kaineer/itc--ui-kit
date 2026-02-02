@@ -12,4 +12,7 @@
 .plusContainer {
   display: flex;
   height: 21px;
+
+  justify-content: center;
+  align-items: center;
 }

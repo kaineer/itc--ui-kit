@@ -4,7 +4,7 @@ import { fn } from "storybook/test";
 import { defaultOrganization } from "../mocks";
 
 const meta = {
-  title: "TalentId/Compounds/UserInfo/OrganizationBadge",
+  title: "TalentId/Compounds/UserInfo/Hidden/OrganizationBadge",
   component: OrganizationBadge,
   parameters: {},
   argTypes: {
