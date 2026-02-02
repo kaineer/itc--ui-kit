@@ -1,7 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { UserInfo } from "./UserInfo";
 import { fn } from "storybook/test";
-import { currencyTypes as typeNames, richUser } from "./mocks";
+import {
+  currencyTypes as typeNames,
+  richUser,
+  organizationList,
+} from "./mocks";
 
 const meta = {
   title: "TalentId/Compounds/UserInfo/UserInfo",
@@ -11,6 +15,8 @@ const meta = {
   args: {
     onAddRole: fn(),
     onRemoveRole: fn(),
+
+    allOrganizations: organizationList,
   },
 } satisfies Meta<typeof UserInfo>;
 
@@ -39,6 +45,7 @@ export const SuperUser: Story = {
       email: "su@itc.ru",
       roles: ["admin", "game_diz", "mentor", "methodist", "player"],
       balance: { ...richUser.balance },
+      organizations: organizationList,
     },
     typeNames,
   },

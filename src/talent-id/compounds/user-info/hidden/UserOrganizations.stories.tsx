@@ -1,7 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { UserOrganizations } from "./UserOrganizations";
-import { userWithOrganizations } from "../mocks";
+import { organizationList, userWithOrganizations } from "../mocks";
 import { fn } from "storybook/test";
+import type { Organization, OrganizationId, User } from "../types";
+import { useState } from "storybook/internal/preview-api";
 
 const meta = {
   title: "TalentId/Compounds/UserInfo/Hidden/UserOrganizations",
@@ -12,6 +14,32 @@ const meta = {
   },
   args: {
     onRemoveFromOrganization: fn(),
+    allOrganizations: organizationList,
+  },
+  render: (args) => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const [user, setUser] = useState<User>(args.user);
+
+    const handleRemove = (id: OrganizationId) => {
+      const { organizations } = user;
+      setUser((prev) => ({
+        ...prev,
+        organizations: (organizations || []).filter((o) => o.id !== id),
+      }));
+    };
+
+    const handleUpdate = (organizations: Organization[]) => {
+      setUser((prev) => ({ ...prev, organizations }));
+    };
+
+    return (
+      <UserOrganizations
+        user={user}
+        allOrganizations={args.allOrganizations}
+        onRemoveFromOrganization={handleRemove}
+        onUpdateOrganizations={handleUpdate}
+      />
+    );
   },
 } satisfies Meta<typeof UserOrganizations>;
 

@@ -1,4 +1,4 @@
-import { type CurrencyTypes, type User } from "./types";
+import { type CurrencyTypes, type Organization, type User } from "./types";
 import classes from "./UserInfo.module.css";
 
 import { Identification } from "./identity/Identification";
@@ -11,6 +11,7 @@ import { UserInfoHidden } from "./UserInfoHidden";
 interface Props {
   user: User;
   typeNames: CurrencyTypes;
+  allOrganizations: Organization[];
   onAddRole?: (userId: string) => void;
   onRemoveRole?: (userId: string, role: string) => void;
 }
@@ -18,6 +19,7 @@ interface Props {
 export const UserInfo = ({
   user,
   typeNames,
+  allOrganizations,
   onAddRole = () => null,
   onRemoveRole = () => null,
 }: Props) => {
@@ -48,7 +50,13 @@ export const UserInfo = ({
           onRemove={handleRemoveRole}
         />
       </div>
-      {(expanded && <UserInfoHidden user={user} typeNames={typeNames} />) ||
+      {(expanded && (
+        <UserInfoHidden
+          user={user}
+          typeNames={typeNames}
+          allOrganizations={allOrganizations}
+        />
+      )) ||
         null}
     </div>
   );

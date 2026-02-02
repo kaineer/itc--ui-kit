@@ -6,9 +6,9 @@ type Props = VariousProps;
 
 const EllipsisWrapper = getVarious("icon", classes);
 
-export const Ellipsis = ({ variation, onClick = () => null }: Props) => {
+export const Ellipsis = ({ variation, onClick = () => null, ref }: Props) => {
   return (
-    <EllipsisWrapper variation={variation} onClick={onClick}>
+    <EllipsisWrapper ref={ref} variation={variation} onClick={onClick}>
       <FaEllipsis />
     </EllipsisWrapper>
   );

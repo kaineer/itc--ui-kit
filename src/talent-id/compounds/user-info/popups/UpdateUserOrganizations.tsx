@@ -40,13 +40,13 @@ const UserOrganizationsRow = ({
 interface Props {
   user: User;
   allOrganizations: Organization[];
-  onOrganizationUpdate: (newOrganizations: Organization[]) => void;
+  onOrganizationsUpdate: (newOrganizations: Organization[]) => void;
 }
 
 export const UpdateUserOrganizations = ({
   user,
   allOrganizations,
-  onOrganizationUpdate = () => null,
+  onOrganizationsUpdate = () => null,
 }: Props) => {
   const [organizations, setOrganizations] = useState<Organization[]>(
     user.organizations || [],
@@ -71,8 +71,8 @@ export const UpdateUserOrganizations = ({
   );
 
   const handleOrganizationsUpdate = useCallback(() => {
-    onOrganizationUpdate(organizations);
-  }, [organizations, onOrganizationUpdate]);
+    onOrganizationsUpdate(organizations);
+  }, [organizations, onOrganizationsUpdate]);
 
   return (
     <PopupContainer>
