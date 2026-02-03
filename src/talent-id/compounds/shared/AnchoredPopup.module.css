@@ -1,4 +1,6 @@
 .anchoredPopup {
   display: inline-block;
   position: absolute;
+
+  z-index: 9999;
 }

@@ -51,3 +51,10 @@ export const organizationList: Organization[] = [
   organization2,
   organization3,
 ];
+
+export const userList: User[] = [
+  { userId: "1", userName: "John Doe", email: "jd@email.com", password: "" },
+  { userId: "2", userName: "John Doe", email: "jd@email.com", password: "" },
+  { userId: "3", userName: "John Doe", email: "jd@email.com", password: "" },
+  { userId: "4", userName: "John Doe", email: "jd@email.com", password: "" },
+];

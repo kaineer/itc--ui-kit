@@ -34,7 +34,10 @@ export const AnchoredPopup = ({
     isOpen &&
     createPortal(
       [
-        <Overlay onClick={onOverlayClick} />,
+        <Overlay
+          variation="black-05 anchored-popup"
+          onClick={onOverlayClick}
+        />,
         <div
           ref={ref}
           className={classes.anchoredPopup}

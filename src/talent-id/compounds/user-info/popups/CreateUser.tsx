@@ -1,4 +1,11 @@
-import type { Organization, OrganizationId, User, UserRole } from "../types";
+import type {
+  Organization,
+  OrganizationId,
+  User,
+  UserCreate,
+  UserId,
+  UserRole,
+} from "../types";
 import { useRef, useCallback, useState } from "react";
 import { Button } from "../../../kit/inputs/Button";
 import { TextInput } from "../../../kit/inputs/TextInput";
@@ -11,11 +18,8 @@ import { UserOrganizations } from "../hidden/UserOrganizations";
 interface Props {
   user?: User;
   allOrganizations: Organization[];
-  onSubmit: (
-    user: Partial<Omit<User, "organizations">> & {
-      organizations: OrganizationId[];
-    },
-  ) => void;
+  onSubmit: (user: UserCreate) => void;
+  onClose: () => void;
 }
 
 const placeholders = {
@@ -25,7 +29,12 @@ const placeholders = {
 };
 
 /** Create or update user */
-export const CreateUser = ({ user, allOrganizations, onSubmit }: Props) => {
+export const CreateUser = ({
+  user,
+  allOrganizations,
+  onSubmit,
+  onClose,
+}: Props) => {
   const nameRef = useRef<HTMLInputElement | null>(null);
   const emailRef = useRef<HTMLInputElement | null>(null);
   const passRef = useRef<HTMLInputElement | null>(null);
@@ -38,9 +47,7 @@ export const CreateUser = ({ user, allOrganizations, onSubmit }: Props) => {
   );
 
   const handleSubmit = useCallback(() => {
-    const data: Partial<Omit<User, "organizations">> & {
-      organizations: OrganizationId[];
-    } = {
+    const data: UserCreate & { userId?: UserId } = {
       userName: nameRef.current?.value || "",
       email: emailRef.current?.value || "",
       password: passRef.current?.value || "",
@@ -52,7 +59,30 @@ export const CreateUser = ({ user, allOrganizations, onSubmit }: Props) => {
     }
 
     onSubmit(data);
-  }, [user, roles, organizationIds, onSubmit, nameRef, emailRef, passRef]);
+    onClose();
+  }, [
+    user,
+    roles,
+    organizationIds,
+    onSubmit,
+    onClose,
+    nameRef,
+    emailRef,
+    passRef,
+  ]);
+
+  const validate = useCallback(() => {
+    if (user) {
+      return false;
+    } else {
+      return (
+        Boolean(nameRef?.current?.value) &&
+        Boolean(emailRef?.current?.value) &&
+        organizationIds.length > 0 &&
+        roles.length > 0
+      );
+    }
+  }, [user, roles, organizationIds, nameRef, emailRef]);
 
   const roleUser: Partial<User> = {
     roles,
@@ -81,7 +111,7 @@ export const CreateUser = ({ user, allOrganizations, onSubmit }: Props) => {
   };
 
   return (
-    <PopupContainer>
+    <PopupContainer onCrossClick={onClose}>
       <Column gap={8}>
         <SectionTitle
           title={existingUser ? "Пользователь" : "Новый пользователь"}
@@ -133,6 +163,7 @@ export const CreateUser = ({ user, allOrganizations, onSubmit }: Props) => {
             existingUser ? "Обновить пользователя" : "Создать пользователя"
           }
           onClick={handleSubmit}
+          disabled={!validate()}
           variation="bottom"
         />
       </Column>

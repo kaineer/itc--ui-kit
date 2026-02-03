@@ -15,6 +15,12 @@ export interface User {
   organizations?: Organization[];
 }
 
+export type UserCreate = Partial<
+  Omit<User, "organizations" | "userId"> & {
+    organizations: OrganizationId[];
+  }
+>;
+
 export interface Organization {
   id: OrganizationId;
   name: string;

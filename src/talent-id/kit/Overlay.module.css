@@ -12,3 +12,11 @@
   opacity: 0.05;
   background-color: #000;
 }
+
+.variation-centered-popup {
+  z-index: 4000; /** 5000 - 1000 */
+}
+
+.variation-anchored-popup {
+  z-index: 9000; /** 9999 - 999 */
+}
