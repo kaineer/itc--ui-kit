@@ -13,8 +13,8 @@ const meta = {
   parameters: {},
   argTypes: {},
   args: {
-    onAddRole: fn(),
     onRemoveRole: fn(),
+    onUpdateUser: fn(),
 
     allOrganizations: organizationList,
   },

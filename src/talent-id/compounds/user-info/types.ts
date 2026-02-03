@@ -21,6 +21,14 @@ export type UserCreate = Partial<
   }
 >;
 
+export type UserUpdate = Omit<User, "organizations"> & {
+  organizations: OrganizationId[];
+};
+
+export interface UserDelete {
+  userId: User["userId"];
+}
+
 export interface Organization {
   id: OrganizationId;
   name: string;

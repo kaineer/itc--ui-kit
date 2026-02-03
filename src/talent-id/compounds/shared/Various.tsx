@@ -8,13 +8,14 @@ export interface VariousProps {
   children?: ReactNode;
   style?: Record<string, string>;
   onClick?: (e: MouseEvent<HTMLDivElement>) => void;
+  title?: string;
 }
 
 type Props = VariousProps;
 
 export const getVarious =
   (className: string, classes: Record<string, string>) =>
-  ({ variation, onClick = () => null, children, ref, style }: Props) => {
+  ({ variation, onClick = () => null, children, ref, style, title }: Props) => {
     const variousClassName = clsx(
       classes[className],
       getVariationClasses(variation, classes),
@@ -26,6 +27,7 @@ export const getVarious =
         className={variousClassName}
         onClick={onClick}
         style={style || {}}
+        title={title}
       >
         {children}
       </div>

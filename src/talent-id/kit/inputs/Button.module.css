@@ -30,3 +30,12 @@
   display: block;
   border-radius: 8px;
 }
+
+.button.variation-reddish {
+  background-color: #fef3f2;
+  color: #7a271a;
+
+  &:hover {
+    background-color: #fecdc9;
+  }
+}

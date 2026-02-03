@@ -73,7 +73,13 @@ export const CreateUser = ({
 
   const validate = useCallback(() => {
     if (user) {
-      return false;
+      return (
+        Boolean(user.userId) &&
+        Boolean(nameRef?.current?.value) &&
+        Boolean(emailRef?.current?.value) &&
+        organizationIds.length > 0 &&
+        roles.length > 0
+      );
     } else {
       return (
         Boolean(nameRef?.current?.value) &&

@@ -1,0 +1,26 @@
+.angle {
+  position: absolute;
+  display: inline-flex;
+  flex-direction: row;
+  gap: 4px;
+}
+
+.variation-lt {
+  left: 0;
+  top: 0;
+}
+
+.variation-rt {
+  right: 0;
+  top: 0;
+}
+
+.variation-lb {
+  left: 0;
+  bottom: 0;
+}
+
+.variation-rb {
+  right: 0;
+  bottom: 0;
+}
