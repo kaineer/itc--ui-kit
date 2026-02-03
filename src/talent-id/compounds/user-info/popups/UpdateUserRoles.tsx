@@ -9,7 +9,7 @@ import { Button } from "../../../kit/inputs/Button";
 import { PopupContainer } from "../../shared/PopupContainer";
 
 interface Props {
-  user: User;
+  user: Pick<User, "roles">;
   onRolesUpdate?: (newRoles: UserRole[]) => void;
 }
 

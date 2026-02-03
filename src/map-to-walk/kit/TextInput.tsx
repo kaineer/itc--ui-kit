@@ -1,9 +1,9 @@
-import clsx from 'clsx';
-import classes from './TextInput.module.css'
-import type { Ref } from 'react';
-import { getVariationClasses } from '../shared/classes';
+import clsx from "clsx";
+import classes from "./TextInput.module.css";
+import type { Ref } from "react";
+import { getVariationClasses } from "../shared/classes";
 
-const defaultVariation = '500x80 shadow';
+const defaultVariation = "500x80 shadow";
 
 interface Props {
   variation?: string;
@@ -12,13 +12,13 @@ interface Props {
 }
 
 export const TextInput = ({
-  variation = '',
-  defaultValue = '',
-  ref
+  variation = "",
+  defaultValue = "",
+  ref,
 }: Props) => {
   const variationClasses = getVariationClasses(
     variation || defaultVariation,
-    classes
+    classes,
   );
 
   if (ref) {
@@ -31,10 +31,5 @@ export const TextInput = ({
     );
   }
 
-  return (
-    <input
-      className={clsx(classes.input, variationClasses)}
-      defaultValue={defaultValue}
-    />
-  );
-}
+  return null;
+};

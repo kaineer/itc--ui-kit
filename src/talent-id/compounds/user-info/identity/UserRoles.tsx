@@ -6,16 +6,23 @@ import classes from "./UserRoles.module.css";
 import { useAnchoredPopup } from "../../../hooks/useAnchoredPopup";
 import { AnchoredPopup } from "../../shared/AnchoredPopup";
 import { UpdateUserRoles } from "../popups/UpdateUserRoles";
+import { SectionTitle } from "../../../kit/SectionTitle";
+import { Column } from "../../shared/Container";
+import { getVariationClasses } from "../../../shared/classes";
+import clsx from "clsx";
 
 interface Props {
-  user: User;
-  onRemove?: (role: string) => void;
-  onAdd?: (e: MouseEvent<HTMLElement>) => void;
+  user: Pick<User, "roles">;
+  hasTitle?: boolean;
+  variation?: string;
+  onRemove?: (role: UserRole) => void;
   onRolesUpdate?: (roles: UserRole[]) => void;
 }
 
 export const UserRoles = ({
   user,
+  hasTitle = false,
+  variation = "",
   onRemove = () => null,
   onRolesUpdate = () => null,
 }: Props) => {
@@ -29,6 +36,11 @@ export const UserRoles = ({
     distance: 8,
   });
 
+  const className = clsx(
+    classes.roles,
+    getVariationClasses(variation, classes),
+  );
+
   const { openPopup, closePopup } = anchorParameters;
 
   const handleRolesUpdate = (newRoles: UserRole[]) => {
@@ -37,19 +49,22 @@ export const UserRoles = ({
   };
 
   return (
-    <div className={classes.roles}>
-      {roles.map((role) => (
-        <RoleBadge name={role} onRemove={onRemove} />
-      ))}
-      <div ref={plusRef} className={classes.plusContainer}>
-        <Ellipsis variation="role" onClick={openPopup} />
+    <Column>
+      {hasTitle && <SectionTitle title="Роли" variation="badges-list" />}
+      <div className={className}>
+        {roles.map((role) => (
+          <RoleBadge name={role} onRemove={onRemove} />
+        ))}
+        <div ref={plusRef} className={classes.plusContainer}>
+          <Ellipsis variation="role" onClick={openPopup} />
+        </div>
+        <AnchoredPopup
+          popupParameters={anchorParameters}
+          onOverlayClick={closePopup}
+        >
+          <UpdateUserRoles user={user} onRolesUpdate={handleRolesUpdate} />
+        </AnchoredPopup>
       </div>
-      <AnchoredPopup
-        popupParameters={anchorParameters}
-        onOverlayClick={closePopup}
-      >
-        <UpdateUserRoles user={user} onRolesUpdate={handleRolesUpdate} />
-      </AnchoredPopup>
-    </div>
+    </Column>
   );
 };

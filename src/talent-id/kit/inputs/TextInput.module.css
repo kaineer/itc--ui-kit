@@ -27,3 +27,19 @@
 .input {
   padding: 0;
 }
+
+/** variation-33,39,47 */
+.variation-33 {
+  height: 33px;
+  line-height: 30px;
+}
+
+.variation-39 {
+  height: 39px;
+  line-height: 36px;
+}
+
+.variation-47 {
+  height: 47px;
+  line-height: 44px;
+}

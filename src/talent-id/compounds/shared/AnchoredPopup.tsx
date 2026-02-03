@@ -31,21 +31,19 @@ export const AnchoredPopup = ({
   }, [isOpen, ref, getAngleStyle]);
 
   return (
-    <>
-      {isOpen &&
-        createPortal(
-          [
-            <Overlay onClick={onOverlayClick} />,
-            <div
-              ref={ref}
-              className={classes.anchoredPopup}
-              style={style || undefined}
-            >
-              {children}
-            </div>,
-          ],
-          document.body,
-        )}
-    </>
+    isOpen &&
+    createPortal(
+      [
+        <Overlay onClick={onOverlayClick} />,
+        <div
+          ref={ref}
+          className={classes.anchoredPopup}
+          style={style || undefined}
+        >
+          {children}
+        </div>,
+      ],
+      document.body,
+    )
   );
 };

@@ -1,4 +1,4 @@
-import classes from "./Row.module.css";
+import classes from "./Container.module.css";
 import type { ReactNode } from "react";
 import { px } from "../../shared/px";
 

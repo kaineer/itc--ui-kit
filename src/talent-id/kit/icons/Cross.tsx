@@ -5,7 +5,6 @@ import { getVarious } from "../../compounds/shared/Various";
 
 interface Props {
   variation?: string;
-  size: number;
   onClick: (e: MouseEvent<HTMLElement>) => void;
 }
 

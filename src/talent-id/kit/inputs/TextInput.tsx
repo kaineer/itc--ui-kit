@@ -8,7 +8,8 @@ type Props = VariousProps & {
   password?: boolean;
   defaultValue?: string;
   value?: string;
-  textRef?: RefObject<HTMLInputElement>;
+  textRef?: RefObject<HTMLInputElement | null>;
+  placeholder?: string;
 };
 
 const InputWrapper = getVarious("input", classes);
@@ -20,6 +21,7 @@ export const TextInput = ({
   value,
   defaultValue,
   textRef,
+  placeholder,
 }: Props) => {
   const style: Record<string, string> = {};
 
@@ -49,6 +51,7 @@ export const TextInput = ({
         ref={textRef}
         type={password ? "password" : "text"}
         style={style}
+        placeholder={placeholder}
       />
     </InputWrapper>
   );

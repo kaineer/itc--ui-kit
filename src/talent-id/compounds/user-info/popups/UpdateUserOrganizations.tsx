@@ -38,7 +38,7 @@ const UserOrganizationsRow = ({
 };
 
 interface Props {
-  user: User;
+  user: Pick<User, "organizations">;
   allOrganizations: Organization[];
   onOrganizationsUpdate: (newOrganizations: Organization[]) => void;
 }

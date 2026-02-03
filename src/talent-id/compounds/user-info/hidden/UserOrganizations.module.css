@@ -12,3 +12,8 @@
   flex-wrap: wrap;
   gap: 4px;
 }
+
+.variation-in-form {
+  margin-left: 0px;
+  width: 454px;
+}

@@ -9,6 +9,7 @@ const meta = {
   argTypes: {
     value: { controls: "string" },
     defaultValue: { controls: "string" },
+    placeholder: { controls: "string" },
   },
   args: {},
 } satisfies Meta<typeof TextInput>;

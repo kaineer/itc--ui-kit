@@ -5,17 +5,13 @@ import type { UserRole } from "../types";
 
 interface Props {
   name: UserRole;
-  onRemove?: (name: string) => void;
+  onRemove?: (name: UserRole) => void;
 }
 
 export const RoleBadge = ({ name, onRemove = () => null }: Props) => {
   return (
     <Badge variation="role" title={roleNames[name] || ""}>
-      <Cross
-        size={16}
-        onClick={() => onRemove(name)}
-        variation="role inbadge"
-      />
+      <Cross onClick={() => onRemove(name)} variation="role inbadge" />
     </Badge>
   );
 };
