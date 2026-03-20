@@ -3,7 +3,6 @@ import {
   type Organization,
   type User,
   type UserCreate,
-  type UserDelete,
   type UserId,
   type UserUpdate,
 } from "./types";

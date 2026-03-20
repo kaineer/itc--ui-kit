@@ -53,8 +53,23 @@ export const organizationList: Organization[] = [
 ];
 
 export const userList: User[] = [
-  { userId: "1", userName: "John Doe", email: "jd@email.com", password: "" },
-  { userId: "2", userName: "John Doe", email: "jd@email.com", password: "" },
-  { userId: "3", userName: "John Doe", email: "jd@email.com", password: "" },
+  {
+    userId: "1",
+    userName: "Титов Александр",
+    email: "jd@email.com",
+    password: "",
+  },
+  {
+    userId: "2",
+    userName: "Бельтюков Кирилл",
+    email: "jd@email.com",
+    password: "",
+  },
+  {
+    userId: "3",
+    userName: "Доронин Вадим",
+    email: "jd@email.com",
+    password: "",
+  },
   { userId: "4", userName: "John Doe", email: "jd@email.com", password: "" },
 ];
