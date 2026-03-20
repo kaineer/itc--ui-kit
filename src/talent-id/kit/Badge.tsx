@@ -1,5 +1,4 @@
 import classes from "./Badge.module.css";
-import { type ReactNode } from "react";
 import { getVarious, type VariousProps } from "../compounds/shared/Various";
 
 type Props = VariousProps & { title: string };
